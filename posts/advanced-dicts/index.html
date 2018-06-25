@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Advanced Python Dictionaries</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #003399;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://cormon1976.github.io//css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.42.1" />
+        
+        
+        
+    </head>
+
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Advanced Python Dictionaries</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/posts/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                                <li><a href="/posts/intro">About</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:me@example.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/username/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/username/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/username/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/username/"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/posts/advanced-dicts/">Advanced Python Dictionaries</a></h4>
+    <h5>January 3, 2018</h5>
+    
+    <a href="https://cormon1976.github.io/tags/python">
+        <kbd class="item-tag">python</kbd>
+    </a>
+    
+    <a href="https://cormon1976.github.io/tags/development">
+        <kbd class="item-tag">development</kbd>
+    </a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="introduction">Introduction.</h2>
+
+<p>In my previous post I talked about the constructs and various methods and data retrival mechanisms that are available when using a python dictionary.</p>
+
+<p>This post is going to cover some more advanced dictionary topics.</p>
+
+<h2 id="a-list-of-dicts">A list of dicts.</h2>
+
+<p>If we had a list of two  dicts like this</p>
+
+<pre><code class="language-python">In [6]: capital_cities = [{&quot;Ireland&quot;: &quot;Dublin&quot;, &quot;England&quot;: &quot;London&quot;, &quot;Spain&quot;: &quot;Madrid&quot;},{&quot;Iran&quot;: &quot;Tehran&quot;, &quot;Turkey&quot;:&quot;Ankara&quot;}]
+
+In [7]: capital_cities                                                                               
+Out[7]:[{'England': 'London', 'Ireland': 'Dublin', 'Spain': 'Madrid'}, {'Iran': 'Tehran', 'Turkey': 'Ankara'}]
+</code></pre>
+
+<p>I always find the best way to approach a data structure that is more complex is to study it closely and dissect it piece by piece until you are clear on what type of data structure you are dealing with.</p>
+
+<p>In out capital_cities examples starting from the outside confirm the data structures
+with the <code>type</code> command</p>
+
+<pre><code class="language-python"> In [8]: type(capital_cities)
+ Out[8]: list
+
+</code></pre>
+
+<p>so we have a list how we find out what data structures are inside the list we can loop over the elements and pass the elements to <code>dir</code></p>
+
+<pre><code class="language-python">In [13]: for elements in capital_cities:
+            print type(elements)
+   ....:
+&lt;type 'dict'&gt;
+&lt;type 'dict'&gt;
+
+</code></pre>
+
+<p>Cool so we have a list contains dicts , we can now go ahead and apply iteration on these structures like so. First a for loop over the list and then a for loop over the dicts.</p>
+
+<pre><code class="language-python">In [17]: for elements in capital_cities:
+            for key , value in elements.items():
+               print 'nested keys are {} , nested values are {} '.format(key, value)
+   ....:
+nested keys are England , nested values are London
+nested keys are Spain , nested values are Madrid
+nested keys are Ireland , nested values are Dublin
+nested keys are Turkey , nested values are Ankara
+nested keys are Iran , nested values are Tehran
+</code></pre>
+
+<h2 id="dictionary-comprehensions">Dictionary Comprehensions</h2>
+
+<p>On top of list comprehensions, Python now supports dict comprehensions, which allows you to express the creation of dictionaries at runtime using a concise syntax.</p>
+
+<p>You should ensure that you never makes them too complex and as a rule of thumb create a new dict from the output of the logic within the dictionary comprehension.</p>
+
+<p>A dictionary comprehension takes the form <code>{key: value for (key, value) in iterable}</code> This syntax was introduced in Python 3 and backported as far as Python 2.7.</p>
+
+<p>In the below example we are constructing a dictionary based on two lists , this is just in keeping with our theme of capital cities. We then use a dict conprehension (and <code>zip</code>)to construct the dict using form  <code>{key: value for (key, value) in iterable}</code>. This is cretainly a more concise way of writing control logic statements.</p>
+
+<pre><code class="language-python">
+In [12]: capitals = [&quot;Dublin&quot;, &quot;London&quot;, &quot;Tehran&quot;]
+
+In [13]: countries = [&quot;Ireland&quot;, &quot;England&quot;, &quot;Iran&quot;]
+
+In [10]: {k: v for (k, v) in zip(countries, capitals)}
+
+In [14]: combinations = {k: v for (k, v) in zip(countries, capitals)}
+
+In [14]: combinations
+
+Out[14]: {'England': 'London', 'Iran': 'Tehran', 'Ireland': 'Dublin'}
+
+</code></pre>
+
+<p>A future example is below. Here we are just setting all the values in an existing dictionary with a comprehension and assigning the output
+to a new dictionary called <code>sunny</code>.</p>
+
+<pre><code class="language-python">
+In [28]: capital_cities = {&quot;Ireland&quot;: &quot;Dublin&quot;, &quot;England&quot;: &quot;London&quot;, &quot;Spain&quot;: &quot;Madrid&quot;}
+
+In [26]: sunny = {key: 'Sunny Weather Forecasted' for key, values in capital_cities.items()}
+
+In [27]: sunny
+Out[27]:
+{'England': 'Sunny Weather Forecasted',
+ 'Ireland': 'Sunny Weather Forecasted',
+ 'Spain': 'Sunny Weather Forecasted'}
+
+</code></pre>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+

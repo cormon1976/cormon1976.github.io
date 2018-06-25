@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Development on cormon.io</title>
+    <link>https://cormon1976.github.io/tags/development/</link>
+    <description>Recent content in Development on cormon.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Jan 2018 18:33:53 +0000</lastBuildDate>
+    
+	<atom:link href="https://cormon1976.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Advanced Python Dictionaries</title>
+      <link>https://cormon1976.github.io/posts/advanced-dicts/</link>
+      <pubDate>Wed, 03 Jan 2018 18:33:53 +0000</pubDate>
+      
+      <guid>https://cormon1976.github.io/posts/advanced-dicts/</guid>
+      <description>Introduction. In my previous post I talked about the constructs and various methods and data retrival mechanisms that are available when using a python dictionary.
+This post is going to cover some more advanced dictionary topics.
+A list of dicts. If we had a list of two dicts like this
+In [6]: capital_cities = [{&amp;quot;Ireland&amp;quot;: &amp;quot;Dublin&amp;quot;, &amp;quot;England&amp;quot;: &amp;quot;London&amp;quot;, &amp;quot;Spain&amp;quot;: &amp;quot;Madrid&amp;quot;},{&amp;quot;Iran&amp;quot;: &amp;quot;Tehran&amp;quot;, &amp;quot;Turkey&amp;quot;:&amp;quot;Ankara&amp;quot;}] In [7]: capital_cities Out[7]:[{&#39;England&#39;: &#39;London&#39;, &#39;Ireland&#39;: &#39;Dublin&#39;, &#39;Spain&#39;: &#39;Madrid&#39;}, {&#39;Iran&#39;: &#39;Tehran&#39;, &#39;Turkey&#39;: &#39;Ankara&#39;}]  I always find the best way to approach a data structure that is more complex is to study it closely and dissect it piece by piece until you are clear on what type of data structure you are dealing with.</description>
+    </item>
+    
+    <item>
+      <title>Python Dictionaries</title>
+      <link>https://cormon1976.github.io/posts/python-dictionaries/</link>
+      <pubDate>Wed, 03 Jan 2018 18:33:53 +0000</pubDate>
+      
+      <guid>https://cormon1976.github.io/posts/python-dictionaries/</guid>
+      <description>Introduction. Dictionaries in python are of one of the built-in data type and argueable the most useful one.
+You&amp;rsquo;ll hear the name &amp;ldquo;Hash Map&amp;rdquo; and &amp;ldquo;Arrays&amp;rdquo; also relating to this data structure.
+In essence a dictionary or dict is a key, value pairing where each key is unique with the following construction
+capital_cities = {&amp;quot;Ireland&amp;quot;: &amp;quot;Dublin&amp;quot;, &amp;quot;England&amp;quot;: &amp;quot;London&amp;quot;, &amp;quot;Spain&amp;quot;: &amp;quot;Madrid&amp;quot;}  Above is a simple dict called capital_cities that contains three keys(countries) and three values(capital city)</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>https://cormon1976.github.io/posts/intro/</link>
+      <pubDate>Wed, 03 Jan 2018 18:22:34 +0000</pubDate>
+      
+      <guid>https://cormon1976.github.io/posts/intro/</guid>
+      <description>My name is Kevin and I work in Security for a large cloud provider. In my job and in my regular life python seems like it can solve problems. Whether it is finding new devices in a data-center by parsing config file or writing a web app to organize my kids hurling team. What is hurling I hear you ask This is&amp;hellip;
+Python seems like it can do many thing and do them well hence I have started and will continue to learn it as a language because as a general purpose languages go it seems like a pretty good one.</description>
+    </item>
+    
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>https://cormon1976.github.io/posts/hugoisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://cormon1976.github.io/posts/hugoisforlovers/</guid>
+      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
+Save it somewhere specific as we will be using it in the next step.
+More complete instructions are available at installing hugo
+Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
+Follow the following steps:
+ Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+    </item>
+    
+  </channel>
+</rss>
