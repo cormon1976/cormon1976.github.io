@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Map and Lambda</title>
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #003399;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="https://cormon1976.github.io//css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.42.1" />
+        
+        
+        
+    </head>
+
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Map and Lambda</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/posts/">Posts</a></li>
+                            
+                                <li><a href="/project/">Projects</a></li>
+                            
+                                <li><a href="/posts/intro">About</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:me@example.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/username/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/username/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/username/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.stackoverflow.com/username/"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/posts/map-and-lambda/">Map and Lambda</a></h4>
+    <h5>June 28, 2018</h5>
+    
+    <a href="https://cormon1976.github.io/tags/python">
+        <kbd class="item-tag">python</kbd>
+    </a>
+    
+    <a href="https://cormon1976.github.io/tags/development">
+        <kbd class="item-tag">development</kbd>
+    </a>
+    
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="introduction-to-lambdas">Introduction to Lambdas</h2>
+
+<p>One of the guys in my team in work loves Lambda functions. I often have to do a double take on the code logic relating to these
+little beauties so here is a quick post on lambdas and maps.</p>
+
+<p>lambda is just a shorthand to create an anonymous function. It&rsquo;s often used to create a one-off function (usually for scenarios when you need to pass a function as a parameter into another function). It can take a parameter or multiple parameters and it returns the value of an expression.</p>
+
+<p>Python&rsquo;s lambda keyword in my opinions is occasionally useful. If you find yourself doing anything remotely complex with it, put it away and define a real function.</p>
+
+<p>It&rsquo;s construction looks like this.</p>
+
+<p><code>lambda arguments: expression</code></p>
+
+<p>The one thing that always gets me is that the lambda statement does not have a return statement, it is implied.</p>
+
+<p>As a comparision, this lambda is the same as the function definition below it.</p>
+
+<pre><code class="language-python">In [1]: doubleaslambda = lambda x: x * 2
+
+In [2]: print(double(5))
+10
+</code></pre>
+
+<pre><code class="language-python">In [14]: def doubleinafunction(x):
+ return x * 2
+
+In [15]: doubleinafunction(5)
+Out[15]: 10
+</code></pre>
+
+<p>The type of the return object from a lambda is a function.</p>
+
+<pre><code class="language-python">[21]: type(doubleaslambda)
+Out[21]: function
+</code></pre>
+
+<p>This reiterates the point that lambda functions are passed as parameters to functions which expects a function object as a parameter like <em>map</em>, <em>reduce</em>, <em>filter</em> functions among one you can define yourself.</p>
+
+<h1 id="map">map</h1>
+
+<p><strong>map</strong> functions expect a function object and any number of iterables like list, dictionary, etc. It executes the function_object for each element in the sequence and returns a list of the elements modified by the function object.</p>
+
+<p>Here is an example using a regular function:</p>
+
+<pre><code class="language-python">
+In [56]: cities = ['Paris', 'Madrid', 'Dublin']
+
+In [57]: def printcities(city):
+ ...: return &quot;I am in &quot; + str(city)
+
+In [58]: map(printcities, cities)
+Out[58]: ['I am in Paris ', 'I am in Madrid', 'I am in Dublin']
+</code></pre>
+
+<p>Here are some examples using a lambda function this is essentially the objective of this post using lambdas and map together as a paradigm.</p>
+
+<h3 id="pass-in-a-list">Pass in a list</h3>
+
+<pre><code class="language-python">In [63]: cities = ['Paris ','Madrid','Dublin']
+In [63]: map(lambda x : &quot;I am in city &quot; + str(x), cities)
+Out[63]: ['I am in city Paris ', 'I am in city Madrid', 'I am in city Dublin']
+</code></pre>
+
+<pre><code class="language-python">capital_cities = {'England': 'London','France': 'Paris', 'Ireland': 'Dublin','Spain': 'Madrid'}
+</code></pre>
+
+<h3 id="pass-in-a-dictionary">Pass in a dictionary</h3>
+
+<pre><code>In [99]: capital_cities = {'England': 'London','France': 'Paris', 'Ireland': 'Dublin','Spain': 'Madrid'}
+
+In [100]: map(lambda x: x, capital_cities.keys())
+Out[100]: ['England', 'Spain', 'Ireland', 'France']
+
+In [101]: map(lambda x: x, capital_cities.values())
+Out[101]: ['London', 'Madrid', 'Dublin', 'Paris']
+
+</code></pre>
+</div>
+
+    
+    
+
+    
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+       
+    </body>
+
+</html>
+
