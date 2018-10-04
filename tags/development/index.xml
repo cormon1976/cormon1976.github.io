@@ -6,10 +6,20 @@
     <description>Recent content in Development on cormon.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jan 2018 18:33:53 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 Jun 2018 21:42:45 +0100</lastBuildDate>
     
 	<atom:link href="https://cormon1976.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Map and Lambda</title>
+      <link>https://cormon1976.github.io/posts/map-and-lambda/</link>
+      <pubDate>Thu, 28 Jun 2018 21:42:45 +0100</pubDate>
+      
+      <guid>https://cormon1976.github.io/posts/map-and-lambda/</guid>
+      <description>Introduction to Lambdas One of the guys in my team in work loves Lambda functions. I often have to do a double take on the code logic relating to these little beauties so here is a quick post on lambdas and maps.
+lambda is just a shorthand to create an anonymous function. It&amp;rsquo;s often used to create a one-off function (usually for scenarios when you need to pass a function as a parameter into another function).</description>
+    </item>
     
     <item>
       <title>Advanced Python Dictionaries</title>
