@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://cormon1976.github.io/posts/python-multi-processing/</loc>
+    <lastmod>2018-11-08T13:52:40+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cormon1976.github.io/posts/map-and-lambda/</loc>
     <lastmod>2018-06-28T21:42:45+01:00</lastmod>
   </url>
@@ -39,7 +44,7 @@
   
   <url>
     <loc>https://cormon1976.github.io/tags/development/</loc>
-    <lastmod>2018-06-28T21:42:45+01:00</lastmod>
+    <lastmod>2018-11-08T13:52:40+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -69,13 +74,13 @@
   
   <url>
     <loc>https://cormon1976.github.io/posts/</loc>
-    <lastmod>2018-06-28T21:42:45+01:00</lastmod>
+    <lastmod>2018-11-08T13:52:40+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cormon1976.github.io/tags/python/</loc>
-    <lastmod>2018-06-28T21:42:45+01:00</lastmod>
+    <lastmod>2018-11-08T13:52:40+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -87,13 +92,13 @@
   
   <url>
     <loc>https://cormon1976.github.io/tags/</loc>
-    <lastmod>2018-06-28T21:42:45+01:00</lastmod>
+    <lastmod>2018-11-08T13:52:40+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://cormon1976.github.io/</loc>
-    <lastmod>2018-06-28T21:42:45+01:00</lastmod>
+    <lastmod>2018-11-08T13:52:40+00:00</lastmod>
     <priority>0</priority>
   </url>
   

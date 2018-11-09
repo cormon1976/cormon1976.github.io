@@ -4,7 +4,7 @@
          
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
+        <title>Python Multi Processing</title>
         <style>
 
     html body {
@@ -60,9 +60,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.42.1" />
         
-        <link href="https://cormon1976.github.io/posts/index.xml" rel="alternate" type="application/rss+xml" title="cormon.io" />
-        <link href="https://cormon1976.github.io/posts/index.xml" rel="feed" type="application/rss+xml" title="cormon.io" />
-        
         
         
     </head>
@@ -80,7 +77,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Posts</a>
+                    <a class="navbar-brand visible-xs" href="#">Python Multi Processing</a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -131,9 +128,7 @@
 
 <main>
 
-    <h2>Posts</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -155,111 +150,95 @@
     
 
 </div>
-  <div class="item">
 
-    
-    
-    
 
-    
-    
+    <br> <div class="text-justify">
 
-    <h4><a href="/posts/map-and-lambda/">Python Map and Lambda</a></h4>
-    <h5>June 28, 2018</h5>
-    
-    <a href="https://cormon1976.github.io/tags/python">
-        <kbd class="item-tag">python</kbd>
-    </a>
-    
-    <a href="https://cormon1976.github.io/tags/development">
-        <kbd class="item-tag">development</kbd>
-    </a>
-    
+<h2 id="introduction">Introduction.</h2>
 
+<p>This article is a brief yet concise introduction to multiprocessing in Python.</p>
+
+<p>Alot of my professional work is geared towards I/O and networking operations with individual separate memory space requirements so  multiprocessing is more preferable to multithreading. This avoids the limitations of threading the main one being the global interpreter lock (GIL), which ensures that only one thread runs at a time.</p>
+
+<p>We prefer in work to take full advantage of  multicore systems, and in the world of Python that means using processes.</p>
+
+<p>The <em>multiprocessing</em> package supports spawning processes using an API similar to the threading module. It also offers both local and remote concurrency. This post will discuss multiprocessing in Python and how to use multiprocessing to communicate between processes and perform synchronization between processes.</p>
+
+<h2 id="basic-example">Basic Example</h2>
+
+<script src="//gist.github.com/cormon1976/1d1086c9165630d3ba85962c299f6945.js"></script>
+
+<p>In the example code above, we first import the Process class and then instantiate the process object passing in the hello_world function which we want to run in the process.</p>
+
+<p>We then tell the process to begin using the start() method, and we finally complete the process with the join() method</p>
+
+<p>It usually more useful to be able to spawn a process with arguments to tell it what work to do. Unlike with threading, to pass arguments to a multiprocessing Process the argument must be able to be serialized using pickle. This example passes each process  a famous person so the output is a little more interesting.</p>
+
+<script src="//gist.github.com/cormon1976/8278c618d98d8bf03b90bc304a5d674c.js"></script>
+
+<h2 id="the-pool-class">The Pool Class</h2>
+
+<p>The Pool class is used to represent a pool of worker processes. It has methods which can allow you to offload tasks to the worker processes. Let’s look at a really simple example:</p>
+
+<script src="//gist.github.com/cormon1976/0c60a9fa7d623bdef579c8175530ab43.js"></script>
+
+<p>Basically what’s happening here is that we create an instance of Pool and tell it to create three worker processes. Then we use the map method to map a function and an iterable to each process. Finally we print the result, which in this case is actually a list:</p>
+
+<p><code>['Hello Bob', 'Hello Alice', 'Hello Eve']</code></p>
+
+<p>I find the pool class easier to grasp :)</p>
+
+<h2 id="processes-communication">Processes Communication</h2>
+
+<p>Multiprocessing supports two types of communication channels between processes <strong>Queues</strong> and <strong>Pipes8</strong>.</p>
+
+<p>Which one to chose ?</p>
+
+<p>To quote <a href="https://stackoverflow.com/questions/8463008/python-multiprocessing-pipe-vs-queue">this</a> SO article</p>
+
+<p><code>If you need more than two points to communicate, use a Queue().</code></p>
+
+<p><code>If you need absolute performance, a Pipe() is much faster because Queue() is built on top of Pipe().</code></p>
+
+<h4 id="queues">Queues</h4>
+
+<p>Queue objects are used to pass data between processes. They can store any pickle-able Python object. The multiprocessing queue lives shared memory.</p>
+
+<script src="//gist.github.com/cormon1976/e1667dfa58444fc52fd8afcbe36de5dc.js"></script>
+
+<p>In the above example, we first create a generic function simply adding in passed objects to the queue. We then instantiate a queue object and a process object and begin the process.</p>
+
+<p>Finally, we check if the queue is not empty and if so we get the values from the front of the queue and print them to the console.</p>
+
+<p>The queue is a First-In-First-Out data structure.</p>
+
+<p>Queues are specially useful when passed as a parameter to a Process target function to enable the Process to consume data. By using put() function we can insert data to then queue and using get() we can get items from queues.</p>
+
+<h4 id="pipes">Pipes</h4>
+
+<p>Pipes in multiprocessing are primarily used for communication between processes. It is more of a two communication data flow. When you create a pipe it create the two ends of that pipe allowing you to send data in and receive it on the other end.</p>
+
+<script src="//gist.github.com/cormon1976/f9724892abf8d67da9f0856dff50cb14.js"></script>
+
+<p>which will produce</p>
+
+<p><code>['Sending something into the pipe !!!!!!!!']</code></p>
+
+<p>We first create a Pipe object and name either side of the pipe return objects.</p>
+
+<p>Then like in the case of of a queue I create a Process passed in a generic function but also what end of the pipe I want to send data into.</p>
+
+<p>And finally we pull out the data on the opposing end of the pipe with the <code>.recv()</code> method.</p>
 </div>
-  <div class="item">
-
-    
-    
-    
 
     
     
 
-    <h4><a href="/posts/advanced-dicts/">Advanced Python Dictionaries</a></h4>
-    <h5>January 3, 2018</h5>
-    
-    <a href="https://cormon1976.github.io/tags/python">
-        <kbd class="item-tag">python</kbd>
-    </a>
-    
-    <a href="https://cormon1976.github.io/tags/development">
-        <kbd class="item-tag">development</kbd>
-    </a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
     
 
     
-    
-
-    <h4><a href="/posts/python-dictionaries/">Python Dictionaries</a></h4>
-    <h5>January 3, 2018</h5>
-    
-    <a href="https://cormon1976.github.io/tags/python">
-        <kbd class="item-tag">python</kbd>
-    </a>
-    
-    <a href="https://cormon1976.github.io/tags/development">
-        <kbd class="item-tag">development</kbd>
-    </a>
-    
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/posts/intro/">Introduction</a></h4>
-    <h5>January 3, 2018</h5>
-    
-    <a href="https://cormon1976.github.io/tags/python">
-        <kbd class="item-tag">python</kbd>
-    </a>
-    
-    <a href="https://cormon1976.github.io/tags/development">
-        <kbd class="item-tag">development</kbd>
-    </a>
-    
-
-</div>
- 
 
 </main>
-
-
-
-<div class="pages">
-
-     
-    <a class="icon pages-icon" href="/posts/page/2/" rel="next">
-        <i class="fa fa-arrow-right"></i>
-    </a>
-    
-
-</div>
-
-
 
         <footer>
 

@@ -6,10 +6,21 @@
     <description>Recent content in Python on cormon.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 28 Jun 2018 21:42:45 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 13:52:40 +0000</lastBuildDate>
     
 	<atom:link href="https://cormon1976.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python Multi Processing</title>
+      <link>https://cormon1976.github.io/posts/python-multi-processing/</link>
+      <pubDate>Thu, 08 Nov 2018 13:52:40 +0000</pubDate>
+      
+      <guid>https://cormon1976.github.io/posts/python-multi-processing/</guid>
+      <description>Introduction. This article is a brief yet concise introduction to multiprocessing in Python.
+Alot of my professional work is geared towards I/O and networking operations with individual separate memory space requirements so multiprocessing is more preferable to multithreading. This avoids the limitations of threading the main one being the global interpreter lock (GIL), which ensures that only one thread runs at a time.
+We prefer in work to take full advantage of multicore systems, and in the world of Python that means using processes.</description>
+    </item>
     
     <item>
       <title>Python Map and Lambda</title>
